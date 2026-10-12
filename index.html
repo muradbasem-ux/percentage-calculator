@@ -1,17 +1,19 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Percentage Calculator – Percent Of, Change, Difference</title>
-<meta name="description" content="Quickly find X% of Y, what percent X is of Y, and percentage increase or decrease.">
+<meta name="description" content="Quickly find X% of Y, what percent X is of Y, percentage change, and add or subtract a percentage.">
 <link rel="stylesheet" href="style.css"><style>body{max-width:600px;margin:2rem auto;padding:0 1rem}.row{margin:1rem 0;padding:1rem;background:var(--card);border-radius:8px}input{font:inherit;width:6rem;padding:.4rem}b{font-size:1.2rem}.ad{margin:2rem 0;min-height:90px}</style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1179483688927432" crossorigin="anonymous"></script>
 </head><body><nav class="top"><a href="/">&larr; All free tools</a><span>Percentage Calculator</span></nav><h1>Percentage Calculator</h1>
-<div class="row">What is <input id="a1" type="number" value="15">% of <input id="b1" type="number" value="200"> ? <b id="r1"></b></div>
-<div class="row"><input id="a2" type="number" value="30"> is what % of <input id="b2" type="number" value="120"> ? <b id="r2"></b></div>
-<div class="row">Change from <input id="a3" type="number" value="80"> to <input id="b3" type="number" value="100"> : <b id="r3"></b></div>
+<div class="row">What is <input id="a1" type="number" step="any" inputmode="decimal" aria-label="Percent" value="15">% of <input id="b1" type="number" step="any" inputmode="decimal" aria-label="Number" value="200"> ? <b id="r1" aria-live="polite"></b></div>
+<div class="row"><input id="a2" type="number" step="any" inputmode="decimal" aria-label="Part" value="30"> is what % of <input id="b2" type="number" step="any" inputmode="decimal" aria-label="Total" value="120"> ? <b id="r2" aria-live="polite"></b></div>
+<div class="row">Change from <input id="a3" type="number" step="any" inputmode="decimal" aria-label="From" value="80"> to <input id="b3" type="number" step="any" inputmode="decimal" aria-label="To" value="100"> : <b id="r3" aria-live="polite"></b></div>
+<div class="row">Increase / decrease <input id="a4" type="number" step="any" inputmode="decimal" aria-label="Number" value="200"> by <input id="b4" type="number" step="any" inputmode="decimal" aria-label="Percent" value="15">% : <b id="r4" aria-live="polite"></b></div>
 <div class="ad"><!-- AD SLOT --></div>
 <script>
-const $=i=>document.getElementById(i),v=i=>+$(i).value,f=n=>isFinite(n)?+n.toFixed(4):'—';
-function u(){$('r1').textContent=f(v('a1')/100*v('b1'));$('r2').textContent=f(v('a2')/v('b2')*100)+'%';
-const c=(v('b3')-v('a3'))/Math.abs(v('a3'))*100;$('r3').textContent=(c>0?'+':'')+f(c)+'%'}
+const $=i=>document.getElementById(i),v=i=>$(i).value===''?NaN:+$(i).value,f=n=>isFinite(n)?(+n.toFixed(4)).toLocaleString(undefined,{maximumFractionDigits:4}):'—',p=n=>isFinite(n)?f(n)+'%':'—';
+function u(){$('r1').textContent=f(v('a1')/100*v('b1'));$('r2').textContent=p(v('a2')/v('b2')*100);
+const c=(v('b3')-v('a3'))/Math.abs(v('a3'))*100;$('r3').textContent=(c>0&&isFinite(c)?'+':'')+p(c);
+const x=v('a4'),y=v('b4');$('r4').textContent=f(x*(1+y/100))+' / '+f(x*(1-y/100))}
 document.querySelectorAll('input').forEach(i=>i.oninput=u);u();
 </script><section class="related"><h2>More tools</h2><a href="/loan-calculator/">Loan Payment Calculator</a><a href="/compound-interest-calculator/">Compound Interest Calculator</a><a href="/discount-calculator/">Discount Calculator</a><a href="/">Browse all</a></section><footer>Free tool · no sign-up · your data stays in your browser · <a href="/about.html">About</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer></body></html>
 
